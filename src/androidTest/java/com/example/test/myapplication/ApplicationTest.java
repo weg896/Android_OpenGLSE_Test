@@ -14,4 +14,5 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
 
 
     int java = 0;
+    int jaj = 0;
 }
