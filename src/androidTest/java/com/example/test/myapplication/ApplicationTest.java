@@ -13,6 +13,6 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
 
 
 
-    int java = 0;
+    int java = 0000;
     int jaj = 1;
 }
