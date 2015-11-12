@@ -1,35 +1,55 @@
 package com.example.test.myapplication;
-/*
-// store model data in float buffer
+
+import android.opengl.GLES30;
+import android.opengl.GLSurfaceView;
 
 import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
 
-private final FloatBuffer mTriangle1Vertices;
-private final FloatBuffer mTriangle2Vertices;
-private final FloatBuffer mTriangle3Vertices;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
 
-// how many bytes per float
-private final int mBytesPerFloat = 4;
+public class LessonOneRenderer implements GLSurfaceView.Renderer {
 
 
-/**
- * Created by test on 11/11/2015.
- */
-public class LessonOneRenderer {
-/*
-    final float[] triangle1VetricesData = {
-            // X,Y,Z
-            // R,G,B,A
-            -0.5f, -0.25f, 0.0f,
-            1.0f, 0.0f, 0.0f, 1.0f,
+    private FloatBuffer vertbuffer;
 
-            0.5f, -0.25f, 0.0f,
-            0.0f, 0.0f, 1.0f, 1.0f,
+    @Override
+    public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+        Shader.makeprogram();
 
-            0.0f, 0.559016994f, 0.0f,
-            0.0f, 1.0f, 0.0f, 1.0f};
+        GLES30.glEnableVertexAttribArray(Shader.positionhandle);
 
-    mTriangle1Vertices = ByteBuffer.allocateDirect(triangle1VerticesData.length * mBytesPerFloat);
-*/
+        float[] verts =
+                {
+                        0.0f, 1.0f, 0.0f,
+                        0.0f, 0.0f, 0.0f,
+                        1.0f, 1.0f, 0.0f
+                };
+        vertbuffer = makefloatbuffer(verts);
+    }
+
+    @Override
+    public void onSurfaceChanged(GL10 gl, int width, int height) {
+        GLES30.glViewport(0, 0, width, height);
+    }
+
+    @Override
+    public void onDrawFrame(GL10 gl) {
+        GLES30.glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+
+        GLES30.glUniform4f(Shader.colorhandle, 1.0f, 0.0f, 0.0f, 1.0f);
+
+        GLES30.glVertexAttribPointer(Shader.positionhandle, 3, GLES30.GL_FLOAT, false, 0, vertbuffer);
+        GLES30.glDrawArrays(GLES30.GL_TRIANGLES, 0, 3);
+    }
+    public FloatBuffer makefloatbuffer(float[] array){
+        FloatBuffer floatbuff = ByteBuffer.allocateDirect(array.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+
+        floatbuff.put(array).position();
+
+        return floatbuff;
+    }
+
 }
-
