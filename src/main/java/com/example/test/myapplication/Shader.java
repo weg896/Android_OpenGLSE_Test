@@ -1,6 +1,6 @@
 package com.example.test.myapplication;
 
-import android.opengl.GLES30;
+import android.opengl.GLES20;
 
 /**
  * Created by test on 11/12/2015.
@@ -25,26 +25,26 @@ public class Shader {
     public static int colorhandle;
 
     public static void makeprogram(){
-        int vertexshader = loadshader(GLES30.GL_VERTEX_SHADER, vertcode);
-        int fragmentshader = loadshader(GLES30.GL_FRAGMENT_SHADER, fragcode);
+        int vertexshader = loadshader(GLES20.GL_VERTEX_SHADER, vertcode);
+        int fragmentshader = loadshader(GLES20.GL_FRAGMENT_SHADER, fragcode);
 
-        program = GLES30.glCreateProgram();
-        GLES30.glAttachShader(program,vertexshader);
-        GLES30.glAttachShader(program,fragmentshader);
-        GLES30.glLinkProgram(program);
+        program = GLES20.glCreateProgram();
+        GLES20.glAttachShader(program,vertexshader);
+        GLES20.glAttachShader(program,fragmentshader);
+        GLES20.glLinkProgram(program);
 
-        positionhandle = GLES30.glGetAttribLocation(program, "a_pos");
-        colorhandle = GLES30.glGetUniformLocation(program, "u_color");
+        positionhandle = GLES20.glGetAttribLocation(program, "a_pos");
+        colorhandle = GLES20.glGetUniformLocation(program, "u_color");
 
-        GLES30.glUseProgram(program);
+        GLES20.glUseProgram(program);
 
     }
 
     private static int loadshader(int type, String shadertext){
-        int shader = GLES30.glCreateShader(type);
+        int shader = GLES20.glCreateShader(type);
 
-        GLES30.glShaderSource(shader, shadertext);
-        GLES30.glCompileShader(shader);
+        GLES20.glShaderSource(shader, shadertext);
+        GLES20.glCompileShader(shader);
 
         return shader;
     }

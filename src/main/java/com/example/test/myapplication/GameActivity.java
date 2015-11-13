@@ -17,23 +17,22 @@ public class GameActivity extends Activity {
     private GLSurfaceView mGLSurfaceView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_game);
-        mGLSurfaceView = new GLSurfaceView(this);
 
-        // checek system support openGL ES 3.0
-        final ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
-        final ConfigurationInfo configurationInfo = activityManager.getDeviceConfigurationInfo();
-        final boolean supportsEs3 = configurationInfo.reqGlEsVersion > 0x30000;
+        // checek system support openGL ES 2.0
+        //final ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        //final ConfigurationInfo configurationInfo = activityManager.getDeviceConfigurationInfo();
+        //final boolean supportsEs2 = configurationInfo.reqGlEsVersion > 0x20000;
 
-        if(supportsEs3){
+        //if(supportsEs2){
             mGLSurfaceView = new GLSurfaceView(this);
-            mGLSurfaceView.setEGLContextClientVersion(3);
+           // mGLSurfaceView.setEGLContextClientVersion(2);
             mGLSurfaceView.setRenderer(new LessonOneRenderer());
-        }else{
+        /*}else{
             return;
-        }
+        }*/
 
         setContentView(mGLSurfaceView);
     }
