@@ -7,52 +7,37 @@ import android.content.pm.ConfigurationInfo;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.Menu;
+import android.view.Window;
+import android.view.WindowManager;
 
 /**
  * Created by test on 11/11/2015.
  */
 public class GameActivity extends Activity {
 
-    private GLSurfaceView mGLSurfaceView;
+    private GLSurfaceView mSurfaceView = null;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_game);
-
-        // checek system support openGL ES 2.0
-        //final ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
-        //final ConfigurationInfo configurationInfo = activityManager.getDeviceConfigurationInfo();
-        //final boolean supportsEs2 = configurationInfo.reqGlEsVersion > 0x20000;
-
-        //if(supportsEs2){
-            mGLSurfaceView = new GLSurfaceView(this);
-           // mGLSurfaceView.setEGLContextClientVersion(2);
-            mGLSurfaceView.setRenderer(new LessonOneRenderer());
-        /*}else{
-            return;
-        }*/
-
-        setContentView(mGLSurfaceView);
+        mSurfaceView = new GLSurfaceView(this);
+        mSurfaceView.setEGLContextClientVersion(2);
+        mSurfaceView.setRenderer(new MainRenderer());
+        mSurfaceView.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
+        setContentView(mSurfaceView);
     }
-
+/*
     @Override
     protected void onResume(){
         super.onResume();
-        mGLSurfaceView.onResume();
+        //mainSurfaceView.onResume();
     }
 
     @Override
     protected void onPause(){
         super.onPause();
-        mGLSurfaceView.onPause();
-    }
-
-    public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-
+        //mainSurfaceView.onPause();
+    }*/
 }

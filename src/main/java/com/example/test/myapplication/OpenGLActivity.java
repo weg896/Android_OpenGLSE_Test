@@ -31,7 +31,7 @@ public class OpenGLActivity extends Activity {
             mGLView = new GLSurfaceView(this);
             mGLView.setEGLContextClientVersion(2);
             mGLView.setPreserveEGLContextOnPause(true);
-            mGLView.setRenderer(new GLES20Renderer());
+            //mGLView.setRenderer(new GLES20Renderer());
         }else{
             return;
         }
