@@ -1,8 +1,6 @@
-package com.example.test.myapplication;
+package com.example.test.myapplication.subTemp;
 
 import android.opengl.GLES20;
-
-import com.example.test.myapplication.GLRenderer;
 
 import static android.opengl.GLES20.GL_DEPTH_BUFFER_BIT;
 

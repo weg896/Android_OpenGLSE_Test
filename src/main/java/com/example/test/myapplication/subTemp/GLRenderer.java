@@ -1,4 +1,4 @@
-package com.example.test.myapplication;
+package com.example.test.myapplication.subTemp;
 
 import android.opengl.GLSurfaceView;
 import android.util.Log;
