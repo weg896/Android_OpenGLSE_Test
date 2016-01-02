@@ -1,3 +1,2 @@
 # MyAndroidTest
-entertain myself
-test test test
+This is the partice code for openGL ES on Android
