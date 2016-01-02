@@ -1,2 +1,2 @@
 # MyAndroidTest
-This is the partice code for openGL ES on Android
+This is the practice code for openGL ES on Android
